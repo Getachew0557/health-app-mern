@@ -39,3 +39,5 @@ client/dist/
 # Misc
 coverage/
 *.local
+
+config.txt
