@@ -4,14 +4,19 @@ const userSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    price: {
-        type: Number,
+    email: {
+        type: String,
         required: true
     },
-    image: {
+    password: {
         type: String,
         required: true
     }
-})
+},
+{
+    timestamps: true
+}
+)
 const User = mongoose.model('User', userSchema);
+
 export default User;
