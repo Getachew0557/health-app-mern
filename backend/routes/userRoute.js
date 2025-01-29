@@ -2,6 +2,8 @@ import express from 'express';
 import bcrypt from 'bcryptjs'; 
 import User from '../models/userModel.js'; // Use `import` instead of `require`
 import jwt from 'jsonwebtoken';
+import authMiddleware from '../middlewares/authMiddleware.js'; // ✅ Correct import
+
 
 const router = express.Router();
 
@@ -52,11 +54,21 @@ router.post('/login', async (req, res) => {
 
 // Create a protected route using middleware to avoid directly compare to database
 
-router.post('get-user-info-by-id', async (req, res) => {
+router.post('/get-user-info-by-id', authMiddleware, async (req, res) => {
     try {
+
+        const user = await User.findOne({_id: req.body.userId});
+        if(!user){
+            return res.status(200).send({message: "User not found", success: false});
+        }else {
+            return res.status(200).send({success: true, data:{
+                name: user.name,
+                email: user.email,
+            }});
+        }
         
     } catch (error) {
-        console.log(error);
+        res.status(500).send({message: "Error getting user info", success: false, error: error});
         
     }
 });
