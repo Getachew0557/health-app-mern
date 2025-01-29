@@ -1,3 +1,4 @@
+
 .card-title {
   font-size: 1.8rem;
   font-weight: bold;
@@ -56,4 +57,16 @@
 input::placeholder {
   color: #a8dadc;
   opacity: 1;
+}
+
+.spinner-parent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.625);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
 }

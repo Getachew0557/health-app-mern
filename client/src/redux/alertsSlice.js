@@ -9,10 +9,10 @@ export const alertsSlice = createSlice({
     showloading: (state) => {
       state.loading = true;
     },
-    hidseloading: (state) => {
+    hideloading: (state) => {
       state.loading = false;
     },
   },
 });
 
-export const { showloading, hidseloading } = alertsSlice.actions;
+export const { showloading, hideloading } = alertsSlice.actions;

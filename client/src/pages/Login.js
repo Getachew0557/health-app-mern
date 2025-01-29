@@ -4,14 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toast";
 import { useSelector, useDispatch } from "react-redux";
+import { showloading, hideloading } from "../redux/alertsSlice";
 
 function Login() {
-  const { loading } = useSelector((state) => state.alerts);
-  console.log(loading);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
+      dispatch(showloading())
       const response = await axios.post("/api/user/login", values); // Use await to wait for response
+      dispatch(hideloading())
+
       if (response.data.success) {
         toast.success(response.data.message);
         toast("Redirecting to Home Page");
@@ -23,6 +26,7 @@ function Login() {
         toast.error(response.data.message);
       }
     } catch (error) {
+      dispatch(hideloading())
       toast.error("Something went wrong");
     }
     console.log("Received values of Form:", values); // Correcting the log statement

@@ -1,16 +1,21 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 import {Link, useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { showloading, hideloading } from "../redux/alertsSlice";
 import { toast } from 'react-toast';
 // import { useState } from 'react';
 
 
 const Register=()=> {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
+      dispatch(showloading())
       const response = await axios.post('/api/user/register', values); // Use await to wait for response
+      dispatch(hideloading())
       if (response.data.success) {
         toast.success(response.data.message);
         toast("Redirecting to Login Page");
@@ -22,6 +27,7 @@ const Register=()=> {
       }
     } catch (error) {
       toast.error("Something went wrong");
+      dispatch(hideloading())
     }
     console.log('Received values of Form:', values);
   };
