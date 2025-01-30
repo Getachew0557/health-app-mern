@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import { Layout } from "antd";
+// import { Layout } from "antd";
+import Layout from "../components/Layout";
 
 function Home() {
   const getData = async () => {
@@ -20,7 +21,7 @@ function Home() {
     getData();
   }, []);
   return <Layout>
-    <h1>Home</h1>
+    <h1>HomePage</h1>
   </Layout>
 }
 

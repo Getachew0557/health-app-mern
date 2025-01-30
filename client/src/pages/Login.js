@@ -2,7 +2,9 @@ import React from "react";
 import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toast";
+// import { toast } from "react-toast";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { useSelector, useDispatch } from "react-redux";
 import { showloading, hideloading } from "../redux/alertsSlice";
 
@@ -33,6 +35,7 @@ function Login() {
   };
   return (
     <div className="authentication">
+      <ToastContainer />
       <div className="authentication-form card p-2">
         <h1 className="card-title">Login to Your Account</h1>
         <Form layout="vertical" className="form" onFinish={onFinish}>

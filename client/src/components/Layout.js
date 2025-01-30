@@ -1,8 +1,10 @@
 import React from 'react'
+import '../Layout.css'
 
-function Layout(children) {
+
+function Layout({children}) {
   return (
-    <div className='main p-2'>
+    <div className='main'>
         <div className='d-flex layout'>
             <div className='sidebar'>
                 sidebar
