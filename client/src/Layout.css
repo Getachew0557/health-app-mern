@@ -2,6 +2,7 @@
     padding: 20px;
 
 }
+
 .sidebar{
     background-color: #005555;
     border-radius: 5px;
@@ -9,7 +10,7 @@
     margin-right: 20px;
     height: 100vh;
     padding: 10px;
-    width: 25%;
+    width: 40%; 
 }
 .content{
     width: 100%;
@@ -31,3 +32,26 @@
     width: 100%;
 
 }
+.menu{
+    margin-top: 100px;
+}
+.menu-item {
+    margin-top: 30px;
+  }
+  .menu-item a {
+    color: rgba(255, 255, 255, 0.575);
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .menu-item i{
+    color: rgba(255, 255, 255, 0.497);
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  .active-menu-item {
+    color: white;
+    background-color: #032e2e;
+    padding: 5px;
+    border-radius: 5px;
+  }
