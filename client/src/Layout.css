@@ -10,18 +10,22 @@
     margin-right: 20px;
     height: 100vh;
     padding: 10px;
-    width: 40%; 
+ 
 }
-.content{
+
+.content {
     width: 100%;
     height: 100%;
 }
-.header{
+.header {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 2px gray;
     margin-bottom: 20px;
     height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     
 }
 .body{
@@ -34,6 +38,7 @@
 }
 .menu{
     margin-top: 100px;
+    padding: 0 20px;
 }
 .menu-item {
     margin-top: 30px;
@@ -54,4 +59,22 @@
     background-color: #032e2e;
     padding: 5px;
     border-radius: 5px;
+  }
+
+  .header-action-icon {
+    font-size: 20px !important;
+    color: black !important;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+
+  /* for mobile view */
+  @media screen and (max-width: 768px) {
+    .menu{
+        padding: 0 10px;
+    }
+
+
+
+    
   }
