@@ -7,13 +7,18 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { loading } = useSelector((state) => state.alerts);
   return (
     <BrowserRouter>
-      <div className="spinner-parent">
-        <div class="spinner-border" role="status"></div>
-      </div>
+      {loading && (
+        <div className="spinner-parent">
+          <div class="spinner-border" role="status"></div>
+        </div>
+      )}
+
       {/* <Toaster position ='top-center' reverseorder ={false} /> */}
       <Routes>
         <Route
