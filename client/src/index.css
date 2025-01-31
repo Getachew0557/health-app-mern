@@ -14,12 +14,6 @@
   margin-bottom: 1.5rem;
 }
 
-.card {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background: #f1faee;
-  padding: 20px;
-}
 .anchor {
   color: #457b9d;
   text-decoration: underline;
@@ -90,6 +84,11 @@ input::placeholder {
   color: white !important;
 }
 
+.page-title {
+  font-size: 25px;
+  color: rgb(26, 19, 19);
+  font-weight: bold;
+}
 
 .card-title {
   font-size: 1.8rem;
@@ -98,4 +97,13 @@ input::placeholder {
   text-align: center;
   margin-bottom: 1rem;
 }
+.normal-text {
+  font-size: 1rem;
 
+}
+.card {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: #f1faee;
+  padding: 20px;
+}

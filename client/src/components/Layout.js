@@ -1,11 +1,12 @@
 import React, { use } from "react";
 import "../Layout.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Layout({ children }) {
   const [collapsed, setCollapsed] = React.useState(false);
   const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const location = useLocation();
   //define the menu items
   const userMenu = [
@@ -20,9 +21,27 @@ function Layout({ children }) {
       icon: "ri-file-list-line",
     },
     {
-      name: "Patients",
-      path: "/patients",
+      name: "Apply Doctor",
+      path: "/apply-doctor",
       icon: "ri-user-2-line",
+    },
+
+    {
+      name: "Profile",
+      path: "/profile",
+      icon: "ri-profile-line",
+    },
+  ];
+  const adminMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "ri-home-line",
+    },
+    {
+      name: "users",
+      path: "/users",
+      icon: "ri-user-line",
     },
     {
       name: "Doctors",
@@ -34,20 +53,29 @@ function Layout({ children }) {
       path: "/profile",
       icon: "ri-profile-line",
     },
+  ];
+
+  const doctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "ri-home-line",
+    },
 
     {
-      name: "Logout",
-      path: "/logout",
-      icon: "ri-logout-circle-line",
+      name: "Profile",
+      path: "/profile",
+      icon: "ri-profile-line",
     },
   ];
-  const menuToBeRendered = userMenu;
+
+  const menuToBeRendered = user?.isAdmin ? adminMenu :userMenu
   return (
     <div className="main">
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
-            <h1>HA</h1>
+            <h2 className="logo">e-Doc</h2>
           </div>
           <div className="menu">
             {menuToBeRendered.map((menu) => {
@@ -63,6 +91,14 @@ function Layout({ children }) {
                 </div>
               );
             })}
+
+            <div className={`d-flex menu-item `} onClick={() =>{
+                localStorage.clear();
+                navigate('/login');
+            }}>
+              <i className="ri-logout-circle-line"></i>
+              {collapsed && <Link to="/login">Logout</Link>}
+            </div>
           </div>
         </div>
 
@@ -81,9 +117,10 @@ function Layout({ children }) {
             )}
 
             <div className="d-flex align-items-center px-2">
-            <i className="ri-notification-line header-action-icon px-3"></i>
-            <Link className="anchor" to='/profile'>{user?.name} </Link>
-
+              <i className="ri-notification-line header-action-icon px-3"></i>
+              <Link className="anchor" to="/profile">
+                {user?.name}{" "}
+              </Link>
             </div>
           </div>
           <div className="body">{children}</div>

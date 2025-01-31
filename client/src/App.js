@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import { useSelector } from "react-redux";
+import ApplyDoctor from "./pages/ApplyDoctor";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -42,6 +43,15 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+
+<Route
+          path="/apply-doctor"
+          element={
+            <ProtectedRoute>
+              <ApplyDoctor />
             </ProtectedRoute>
           }
         />

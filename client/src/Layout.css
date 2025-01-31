@@ -3,6 +3,10 @@
 
 }
 
+.logo {
+  color: white;
+  font-weight: bold;
+}
 .sidebar{
     background-color: #005555;
     border-radius: 5px;
@@ -34,6 +38,7 @@
     box-shadow: 0 0 2px gray;
     height: 87vh;
     width: 100%;
+    padding: 15px;
 
 }
 .menu{
@@ -73,8 +78,5 @@
     .menu{
         padding: 0 10px;
     }
-
-
-
     
   }
