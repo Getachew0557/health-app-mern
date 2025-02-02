@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const doctorSchema = new mongoose.Schema(
   {
     userId: {
-      type: string,
+      type: String,
       required: true,
     },
     firstName: {
@@ -15,14 +15,6 @@ const doctorSchema = new mongoose.Schema(
       required: true,
     },
 
-    email: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: String,
-      required: true,
-    },
 
     website: {
       type: String,
@@ -45,17 +37,14 @@ const doctorSchema = new mongoose.Schema(
       required: true,
     },
 
-    consultationHours: {
-      type: Object,
+    timing: {
+      type: Array,
       required: true,
     },
-    fromTime: {
+
+    status: {
       type: String,
-      required: true,
-    },
-    toTime: {
-      type: String,
-      required: true,
+      default: "pending",
     },
   },
 

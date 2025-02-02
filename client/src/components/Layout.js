@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import "../Layout.css";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Badge } from "antd";
 import { useSelector } from "react-redux";
 
 function Layout({ children }) {
@@ -117,8 +118,11 @@ function Layout({ children }) {
             )}
 
             <div className="d-flex align-items-center px-2">
-              <i className="ri-notification-line header-action-icon px-3"></i>
-              <Link className="anchor" to="/profile">
+                <Badge count={user?.unseenNotifications.length} onClick={() => navigate("/notifications")}>
+                  <i className="ri-notification-line header-action-icon px-3"></i>
+              </Badge>
+              
+              <Link className="anchor mx-3" to="/profile">
                 {user?.name}{" "}
               </Link>
             </div>
