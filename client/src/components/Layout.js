@@ -5,7 +5,7 @@ import { Badge } from "antd";
 import { useSelector } from "react-redux";
 
 function Layout({ children }) {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(true);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const location = useLocation();

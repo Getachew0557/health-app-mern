@@ -10,6 +10,7 @@ import PublicRoute from "./components/PublicRoute";
 import { useSelector } from "react-redux";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Notifications from "./pages/Notifications";
+import Hero from "./pages/Hero";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -23,6 +24,16 @@ function App() {
 
       {/* <Toaster position ='top-center' reverseorder ={false} /> */}
       <Routes>
+      
+
+      <Route
+          path="/home"
+          element={
+            <PublicRoute>
+              <Hero></Hero>
+            </PublicRoute>
+            }
+            />,
         <Route
           path="/login"
           element={
