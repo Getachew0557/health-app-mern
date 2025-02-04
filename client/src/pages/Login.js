@@ -19,11 +19,11 @@ function Login() {
 
       if (response.data.success) {
         toast.success(response.data.message);
-        toast("Redirecting to Home Page");
+        toast("Redirecting to Dashboard Page");
         localStorage.setItem("token", response.data.data);
 
         console.log(response.data.message);
-        navigate("/"); // Redirect to Home page
+        navigate("/"); // Redirect to Dashboard page
       } else {
         toast.error(response.data.message);
       }

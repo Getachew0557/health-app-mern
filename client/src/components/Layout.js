@@ -12,7 +12,7 @@ function Layout({ children }) {
   //define the menu items
   const userMenu = [
     {
-      name: "Home",
+      name: "Dashboard",
       path: "/",
       icon: "ri-home-line",
     },
@@ -35,7 +35,7 @@ function Layout({ children }) {
   ];
   const adminMenu = [
     {
-      name: "Home",
+      name: "Dashboard",
       path: "/",
       icon: "ri-home-line",
     },
@@ -58,7 +58,7 @@ function Layout({ children }) {
 
   const doctorMenu = [
     {
-      name: "Home",
+      name: "Dashboard",
       path: "/",
       icon: "ri-home-line",
     },
