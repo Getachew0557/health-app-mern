@@ -55,7 +55,7 @@ The Health App is designed to help users track and manage their health data. It 
 
 2. Install dependencies:
 
-## For the backend:
+## For the :
 
 ```bash
 npm install

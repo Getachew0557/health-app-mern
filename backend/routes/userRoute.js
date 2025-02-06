@@ -66,6 +66,17 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Route to get all users
+router.get("/get-all-users", authMiddleware, async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).send({ success: true, users });
+  } catch (error) {
+    console.error("Error fetching users:", error.message);
+    res.status(500).send({ message: "Error fetching users", success: false });
+  }
+});
+
 // Create a protected route using middleware to avoid directly compare to database
 
 router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
@@ -147,34 +158,8 @@ router.post(
         error,
       });
     }
-  }
-);
-
-// Mark notification as seen
-router.post(
-  "/delete-all-notifications",
-  authMiddleware,
-  async (req, res) => {
-    try {
-      const user = await User.findOne({ _id: req.body.userId });
-      user.seenNotifications = [];
-      user.unmarkModified = [];
-      const updatedUser = await user.save();
-      updatedUser.password = undefined;
-    
-
-      res.status(200).send({
-        success: true,
-        message: "All notification marked as seen",
-        data: updatedUser,
-      });
-    } catch (error) {
-      console.error("Error in /register route:", error.message); // Log the error
-      res
-        .status(500)
-        .send({ message: "Error on apply doctor", success: false, error });
     }
-  }
+  
 );
 
 export default router;
