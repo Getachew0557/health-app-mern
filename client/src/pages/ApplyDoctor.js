@@ -155,6 +155,7 @@ function ApplyDoctor() {
           </div>
         </Form>
       </div>
+      
     </Layout>
   );
 }
