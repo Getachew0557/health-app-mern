@@ -9,10 +9,24 @@ import PublicRoute from "./components/PublicRoute";
 import { useSelector } from "react-redux";
 import ApplyDoctor from "./pages/ApplyDoctor";
 import Notifications from "./pages/Notifications";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
-  return (
+useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+}, []);
+
+return (
+
     <BrowserRouter>
       {loading && (
         <div className="spinner-parent">
@@ -26,6 +40,22 @@ function App() {
           element={
             <PublicRoute>
               <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <PublicRoute>
+              <Home />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PublicRoute>
+              <About />
             </PublicRoute>
           }
         />
@@ -65,5 +95,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;

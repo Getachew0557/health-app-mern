@@ -1,0 +1,238 @@
+.service-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+  }
+  
+  .service-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .service-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .service-header h2 {
+    color: #2a5298;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .header-underline {
+    width: 80px;
+    height: 4px;
+    background-color: #2a5298;
+    margin: 0 auto;
+  }
+  
+  .service-subtitle {
+    color: #666;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .service-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .service-card.active {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(42, 82, 152, 0.2);
+  }
+  
+  .service-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #2a5298;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover .service-icon {
+    transform: rotate(360deg);
+  }
+  
+  .service-icon i {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .service-card h3 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .service-card.active .service-details {
+    max-height: 300px;
+    opacity: 1;
+    margin: 1.5rem 0;
+  }
+  
+  .service-details ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .service-details li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    color: #555;
+  }
+  
+  .service-details li i {
+    color: #2a5298;
+    font-size: 0.9rem;
+  }
+  
+  .learn-more-btn {
+    background: none;
+    border: 2px solid #2a5298;
+    color: #2a5298;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .learn-more-btn:hover {
+    background-color: #2a5298;
+    color: white;
+  }
+  
+  .service-cta {
+    text-align: center;
+    background-color: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 4rem;
+  }
+  
+  .service-cta h3 {
+    color: #2a5298;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .service-cta p {
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-btn {
+    background-color: #2a5298;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-btn:hover {
+    background-color: #1e3c70;
+    transform: translateY(-2px);
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #2a5298;
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 992px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .service-section {
+      padding: 4rem 0;
+    }
+  
+    .service-header h2 {
+      font-size: 2rem;
+    }
+  
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .service-cta {
+      padding: 2rem;
+    }
+  
+    .service-cta h3 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  [data-aos] {
+    opacity: 0;
+    transition-property: all;
+  }
+  
+  [data-aos].aos-animate {
+    opacity: 1;
+  }
