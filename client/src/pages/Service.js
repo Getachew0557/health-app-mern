@@ -111,7 +111,7 @@ const Service = () => {
 
   return (
     <div className="service-section" id="services">
-      <div className="service-container">
+      <div className="service-container ">
         <div className="service-header" data-aos="fade-up">
           <h2>Our Services</h2>
           <div className="header-underline"></div>

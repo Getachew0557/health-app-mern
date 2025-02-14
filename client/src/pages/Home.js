@@ -4,6 +4,7 @@ import './Home.css';
 import Service from './Service';
 import About from './About';
 import Contact from './Contact';
+import Footer from './Footer';
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +24,7 @@ function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'features'];
+      const sections = ['home', 'about', 'service', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -54,13 +55,14 @@ function Home() {
              className={activeSection === 'about' ? 'active' : ''}>
             About
           </a>
-          <a onClick={() => scrollToSection('services')}>
+          <a onClick={() => scrollToSection('service')} 
+             className={activeSection === 'service' ? 'active' : ''}>
             Services
-            </a>
-            <a onClick={() => scrollToSection('contact')}>
+          </a>
+          <a onClick={() => scrollToSection('contact')} 
+             className={activeSection === 'contact' ? 'active' : ''}>
             Contact
-            </a>
-          
+          </a>
           <div className="auth-buttons">
             <Link to="/login" className="login-btn">Login</Link>
             <Link to="/register" className="register-btn">Register</Link>
@@ -88,17 +90,18 @@ function Home() {
 
       <section id="about">
         <About/>
-
       </section>
 
       <section id="service">
         <Service/>
-
       </section>
 
       <section id="contact">
         <Contact />
+      </section>
 
+      <section id="footer">
+        <Footer />
       </section>
     </div>
   );

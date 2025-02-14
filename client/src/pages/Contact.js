@@ -39,7 +39,7 @@ const Contact = () => {
     {
       icon: 'fas fa-location-dot',
       title: 'Visit Us',
-      details: ['123 Healthcare Ave', 'Medical Center, NY 10001'],
+      details: ['123 Healthcare Ave', 'Medical Center, AA 1000'],
       color: '#dc3545'
     }
   ];
@@ -84,7 +84,7 @@ const Contact = () => {
 
   return (
     <div className="contact-section" id="contact">
-      <div className="contact-container">
+      <div className="contact-container mb-5">
         <div className="contact-header" data-aos="fade-up">
           <h2>Contact Us</h2>
           <div className="header-underline"></div>
@@ -115,8 +115,7 @@ const Contact = () => {
           <div className="map-container" data-aos="fade-right">
             <iframe
               title="location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1644429837094!5m2!1sen!2s"
-              width="100%"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1896144.983217735!2d33.71150929260703!3d9.145104523032208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b68dcb0494eb9%3A0x246bda194aa3ff4f!2sEthiopia!5e0!3m2!1sen!2sus!4v1644429837094!5m2!1sen!2sus"              width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""

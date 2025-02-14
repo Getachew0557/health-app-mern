@@ -86,11 +86,11 @@ const About = () => {
           <div className="about-image" 
                data-aos="fade-right" 
                data-aos-duration="1000">
-            <img src="/api/placeholder/500/400" alt="Medical Team" className="main-image" />
-            <div className="experience-badge">
+            <img src="https://th.bing.com/th/id/OIP.SFCcWVmnKxFqoZj5o5s0pgHaE8?rs=1&pid=ImgDetMain" alt="Medical Team" className="main-image" />
+            {/* <div className="experience-badge">
               <span className="years">15+</span>
               <span className="text">Years of Excellence</span>
-            </div>
+            </div> */}
           </div>
 
           <div className="about-text" 
