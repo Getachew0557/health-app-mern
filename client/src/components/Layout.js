@@ -13,7 +13,7 @@ function Layout({ children }) {
   const userMenu = [
     {
       name: "Dashboard",
-      path: "/",
+      path: "/dashboard",
       icon: "ri-home-line",
     },
     {
@@ -36,7 +36,7 @@ function Layout({ children }) {
   const adminMenu = [
     {
       name: "Dashboard",
-      path: "/",
+      path: "/dashboard",
       icon: "ri-home-line",
     },
     {
@@ -59,7 +59,7 @@ function Layout({ children }) {
   const doctorMenu = [
     {
       name: "Dashboard",
-      path: "/",
+      path: "/dashboard",
       icon: "ri-home-line",
     },
 

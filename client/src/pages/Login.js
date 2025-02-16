@@ -23,7 +23,7 @@ function Login() {
         localStorage.setItem("token", response.data.data);
 
         console.log(response.data.message);
-        navigate("/"); // Redirect to Dashboard page
+        navigate("/dashboard"); // Redirect to Dashboard page
       } else {
         toast.error(response.data.message);
       }

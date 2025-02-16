@@ -44,7 +44,7 @@ return (
           }
         />
         <Route
-          path="/home"
+          path="/"
           element={
             <PublicRoute>
               <Home />
@@ -68,7 +68,7 @@ return (
           }
         />
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
