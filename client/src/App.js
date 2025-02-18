@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import ApplyAppointment from "./pages/ApplyAppointment";
+import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import { useSelector } from "react-redux";
@@ -15,18 +17,16 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
 
-
 function App() {
   const { loading } = useSelector((state) => state.alerts);
-useEffect(() => {
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-}, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  }, []);
 
-return (
-
+  return (
     <BrowserRouter>
       {loading && (
         <div className="spinner-parent">
@@ -84,6 +84,14 @@ return (
           }
         />
         <Route
+          path="/appointments"
+          element={
+            <ProtectedRoute>
+              <ApplyAppointment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/notifications"
           element={
             <ProtectedRoute>
@@ -91,10 +99,17 @@ return (
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 }
-
 
 export default App;

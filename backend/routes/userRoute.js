@@ -79,7 +79,78 @@ router.get("/get-all-users", authMiddleware, async (req, res) => {
 
 // Create a protected route using middleware to avoid directly compare to database
 
+// Create new appointment
+router.post("/create-appointment", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.body.userId);
+    if (!user) {
+      return res.status(404).send({ message: "User not found", success: false });
+    }
+    
+    const newAppointment = {
+      firstName: req.body.firstName,
+      middleName: req.body.middleName || '',
+      lastName: req.body.lastName,
+      email: req.body.email,
+      phone: req.body.phone,
+      prescription: req.body.prescription || '',
+      message: req.body.message,
+      status: 'pending'
+    };
+    
+    // Validate required fields
+    if (!newAppointment.firstName || !newAppointment.lastName || 
+        !newAppointment.email || !newAppointment.phone || 
+        !newAppointment.message) {
+      return res.status(400).send({ 
+        message: "All required fields must be filled", 
+        success: false 
+      });
+    }
+    
+    user.appointments.push(newAppointment);
+    const updatedUser = await user.save();
+
+    
+    res.status(200).send({ 
+      message: "Appointment created successfully", 
+      success: true,
+      appointment: newAppointment
+    });
+  } catch (error) {
+    console.error("Error creating appointment:", error);
+    res.status(500).send({ 
+      message: "Error creating appointment", 
+      success: false,
+      error: error.message 
+    });
+  }
+});
+
+// Get user appointments
+router.get("/get-user-appointments", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.body.userId);
+    if (!user) {
+      return res.status(404).send({ message: "User not found", success: false });
+    }
+    
+    res.status(200).send({ 
+      success: true, 
+      appointments: user.appointments 
+    });
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    res.status(500).send({ 
+      message: "Error fetching appointments", 
+      success: false,
+      error: error.message 
+    });
+  }
+});
+
 router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
+
   try {
     const user = await User.findOne({ _id: req.body.userId });
     user.password = undefined;
@@ -161,5 +232,43 @@ router.post(
     }
   
 );
+
+// Get user profile
+router.get("/profile", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+
+      .select("-password") // Exclude password
+      .select("-__v"); // Exclude version key
+
+    if (!user) {
+      return res.status(404).send({ 
+        message: "User not found", 
+        success: false 
+      });
+    }
+
+    res.status(200).send({
+      success: true,
+      data: {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        profilePhoto: user.profilePhoto,
+        ...(user.isDoctor && {
+          specialization: user.specialization,
+          experience: user.experience
+        })
+      }
+    });
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+    res.status(500).send({
+      message: "Error fetching profile",
+      success: false,
+      error: error.message
+    });
+  }
+});
 
 export default router;
