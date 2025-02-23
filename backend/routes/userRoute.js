@@ -201,11 +201,7 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
 });
 
 // Mark notification as seen
-// Mark notification as seen
-router.post(
-  "/mark-all-notifications-as-seen",
-  authMiddleware,
-  async (req, res) => {
+router.post("/mark-all-notifications-as-seen", authMiddleware, async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.body.userId });
       const unseenNotifications = user.unseenNotifications;
@@ -268,6 +264,30 @@ router.get("/profile", authMiddleware, async (req, res) => {
       success: false,
       error: error.message
     });
+  }
+});
+
+// Get doctor profile
+router.get("/doctor/profile", authMiddleware, async (req, res) => {
+  try {
+    const doctor = await User.findById(req.user.id).select("-password -__v");
+    if (!doctor || !doctor.isDoctor) {
+      return res.status(404).send({ message: "Doctor not found", success: false });
+    }
+    res.status(200).send({ 
+      success: true, 
+      data: {
+        firstName: doctor.firstName,
+        lastName: doctor.lastName,
+        email: doctor.email,
+        profilePhoto: doctor.profilePhoto,
+        specialization: doctor.specialization,
+        experience: doctor.experience
+      }
+    });
+  } catch (error) {
+    console.error("Error fetching doctor profile:", error);
+    res.status(500).send({ message: "Error fetching doctor profile", success: false });
   }
 });
 

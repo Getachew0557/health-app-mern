@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Upload, message, Row, Col } from "antd";
-
+import { Form, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -28,18 +27,18 @@ function Profile() {
             },
           });
         } else {
-          response = await axios.get("/api/user/profile", {
+          response = await axios.get("/api/profile", {
+
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           });
         }
-        setProfileData(response.data);
+        setProfileData(response.data.data);
       } catch (error) {
         console.error("Profile fetch error:", error);
         message.error(error.response?.data?.message || "Error fetching profile");
       }
-
     };
     fetchProfile();
   }, [user]);
@@ -70,63 +69,40 @@ function Profile() {
     }
   };
 
-
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   return (
     <Layout>
       <div className="page-title">
         <h1>Profile</h1>
         <hr />
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
-
         
-          <Form layout="vertical" onFinish={onFinish}>
-            <div className="profile-values">
-              <div className="profile-photo">
-                {profileData.profilePhoto ? (
-                  <img src={profileData.profilePhoto} alt="Profile" />
-                ) : (
-                  <Upload
-                    fileList={fileList}
-                    onChange={handleFileChange}
-                    beforeUpload={() => false}
-                    maxCount={1}
-                  >
-                    <button className="upload-button" icon={<UploadOutlined />}>
-                      {fileList.length > 0 ? 'Change Photo' : 'Upload Photo'}
-                    </button>
-                  </Upload>
-                )}
-              </div>
-              
-              <div className="profile-info">
-                <div>{profileData.firstName} {profileData.lastName}</div>
-                <div>{profileData.email}</div>
-              </div>
-
-              {user?.isDoctor && (
-                <div className="professional-info">
-                  <div>{profileData.specialization}</div>
-                  <div>{profileData.experience} years experience</div>
-                </div>
-              )}
-
-              {fileList.length > 0 && (
-                <div className="d-flex justify-content-end">
-                  <button className="primary-button" type="submit">
-                    Update Profile Photo
-                  </button>
-                </div>
-              )}
+        <Form layout="vertical" onFinish={onFinish}>
+          <div className="profile-values">
+            <div className="profile-photo">
+              <Upload
+                fileList={fileList}
+                onChange={handleFileChange}
+                beforeUpload={() => false}
+                maxCount={1}
+              >
+                <button className="upload-button" icon={<UploadOutlined />}>
+                  {fileList.length > 0 ? 'Change Photo' : 'Upload Photo'}
+                </button>
+              </Upload>
+            </div>
+            
+            <div className="profile-info">
+              <div><strong>First Name:</strong> {profileData?.firstName || 'Loading...'}</div>
+              <div><strong>Email:</strong> {profileData?.email || 'Loading...'}</div>
             </div>
 
-
+            {fileList.length > 0 && (
+              <div className="d-flex justify-content-end">
+                <button className="primary-button" type="submit">
+                  Update Profile Photo
+                </button>
+              </div>
+            )}
+          </div>
         </Form>
       </div>
     </Layout>

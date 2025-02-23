@@ -16,6 +16,8 @@ import About from "./pages/About";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
+import UserList from './Admin/UserList';
+import DoctorList from './Admin/DoctorList';
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -104,6 +106,23 @@ function App() {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/get-all-users"
+          element={
+            <ProtectedRoute>
+              < UserList/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/get-all-doctors"
+          element={
+            <ProtectedRoute>
+              < DoctorList/>
             </ProtectedRoute>
           }
         />

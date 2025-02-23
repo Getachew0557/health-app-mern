@@ -41,12 +41,12 @@ function Layout({ children }) {
     },
     {
       name: "users",
-      path: "/users",
+      path: "/get-all-users",
       icon: "ri-user-line",
     },
     {
       name: "Doctors",
-      path: "/doctors",
+      path: "/get-all-doctors",
       icon: "ri-nurse-line",
     },
     {
@@ -76,7 +76,7 @@ function Layout({ children }) {
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
-            <h2 className="logo">e-Doc</h2>
+            <h2 className="logo">DocCare ET</h2>
           </div>
           <div className="menu">
             {menuToBeRendered.map((menu) => {

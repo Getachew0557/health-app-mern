@@ -118,4 +118,18 @@ router.post("/assign-doctor", authMiddleware, async (req, res) => {
   }
 });
 
+// Get admin profile
+router.get("/profile", authMiddleware, async (req, res) => {
+  try {
+    const admin = await User.findById(req.user.id).select("-password -__v");
+    if (!admin) {
+      return res.status(404).send({ message: "Admin not found", success: false });
+    }
+    res.status(200).send({ success: true, data: admin });
+  } catch (error) {
+    console.error("Error fetching admin profile:", error);
+    res.status(500).send({ message: "Error fetching admin profile", success: false });
+  }
+});
+
 export default router;

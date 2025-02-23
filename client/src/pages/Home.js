@@ -45,7 +45,7 @@ function Home() {
   return (
     <div className="home-container">
       <nav className="navbar">
-        <div className="nav-brand">DocCare</div>
+        <div className="nav-brand">DocCare ET</div>
         <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a onClick={() => scrollToSection('home')} 
              className={activeSection === 'home' ? 'active' : ''}>
