@@ -214,5 +214,5 @@ const Contact = () => {
     </div>
   );
 };
-
+//make  accesiible
 export default Contact;
