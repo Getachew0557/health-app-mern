@@ -53,6 +53,7 @@ function App() {
             </PublicRoute>
           }
         />
+        
         <Route
           path="/about"
           element={
@@ -61,6 +62,7 @@ function App() {
             </PublicRoute>
           }
         />
+
         <Route
           path="/register"
           element={
@@ -125,6 +127,7 @@ function App() {
               < DoctorList/>
             </ProtectedRoute>
           }
+
         />
       </Routes>
     </BrowserRouter>
