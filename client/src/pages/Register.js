@@ -32,6 +32,7 @@ const Register=()=> {
     console.log('Received values of Form:', values);
   };
   
+
   return (
     <div className="authentication">
       <div className="authentication-form card p-2">
@@ -74,5 +75,6 @@ const Register=()=> {
     </div>
   );
 }
+
 
 export default Register;
